@@ -1,5 +1,6 @@
 
 const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 // create our User model
 class User extends Model {};
 
@@ -43,6 +44,7 @@ User.init(
     {
         // Table configuration options
         // Don't automatically create createdAt/updatedAt timestamp fields
+        sequelize,
         timestamps: false,
         // Don't plurailze name of database talbe
         freezeTableName: true,
