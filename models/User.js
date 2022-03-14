@@ -17,7 +17,7 @@ User.init(
             autoIncrement: true
         },
         // user column
-        user: {
+        username: {
             type: DataTypes.STRING,
             allowNull: false
         },
