@@ -15,11 +15,16 @@
     <a href="/">Just Tech News</a>
     </h1>
     <nav>
+        {{!-- does req.session.loggedIn get passed from res.render('single-post') through single-post.handlebars to main? --}}
+        {{#if loggedIn}}
         <button id="logout" class="btn-no-style">logout</button>
+        {{else}}
         <a href="/login">login</a>
+        {{/if}}
     </nav>
 </header>
 <main>
+    {{!-- when does the homepage become the variable 'body'?  --}}
     {{{ body }}}
 </main>
 <footer>
@@ -27,7 +32,9 @@
 </footer>
 </div>
 
+{{#if loggedIn}}
 <script src="/javascript/logout.js"></script>
+{{/if}}
 </body>
 
 </html>

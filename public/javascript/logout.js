@@ -5,7 +5,7 @@ async function logout() {
         method: 'post',
         headers: { 'Content-Type': 'application/json'}
     });
-    if(response.status(204)) {
+    if(response.ok) {
         document.location.replace('/');
     } else {
         alert(response.statusText);
