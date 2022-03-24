@@ -17,6 +17,7 @@
     <nav>
         {{!-- does req.session.loggedIn get passed from res.render('single-post') through single-post.handlebars to main? --}}
         {{#if loggedIn}}
+        <a href="/dashboard">dashboard</a>
         <button id="logout" class="btn-no-style">logout</button>
         {{else}}
         <a href="/login">login</a>
