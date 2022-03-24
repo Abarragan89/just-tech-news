@@ -103,13 +103,19 @@ router.post('/', (req, res) => {
 });
 // Upvote
 router.put('/upvote', (req, res) => {
-    Post.upvote(req.body, { Vote })
-        .then(dbPostData => res.json(dbPostData))
+    // make sur ethe session still exists first
+    if (req.session) {
+        // pass session along with all destructured properties on req.body
+        // Are we setting up overriding user_id to req.session?
+        // Why do we have Vote Comment and User? 
+        Post.upvote({ ...req.body, user_id: req.session.user_id}, {Vote, Comment, User })
+        .then(updatedVoteData => res.json(updatedVoteData))
         .catch(err => {
             console.log(err);
-            res.status(400).json(err);
+            res.status(500).json(err)
         });
-})
+    }
+});
 
 
 router.put('/:id', (req, res) => {
